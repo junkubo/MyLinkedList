@@ -3,6 +3,7 @@ public class MyLinkedList{
  private Node start,end;
  private Node head = null;
  private Node tail = null;
+ private int count = 0;
 
  public MyLinkedList(){
 
@@ -20,19 +21,60 @@ public class MyLinkedList{
     size += 1;
     if (head==null) {
       head = tail = newNode;
-      head.previous=null;
+      head.prev=null;
       tail.next = null;
     } else {
       tail.next = newNode;
-      newNode.previous = tail;
+      newNode.prev = tail;
       tail = newNode;
       tail.next = null;
     }
+    return true;
  }
  public boolean add(int index, String value) {
-
+   count = 0;
+   Node current = head;
+   while (current != null) {
+     count += 1;
+     if (count == index) {
+       size += 1;
+       current.next = current;
+       current = new Node(value);
+       return true;
+     }
+   }
+   return false;
  }
- public String get(int index);
- public String set(int index, String value);
- public String toString();
+ public String get(int index) {
+   count = 0;
+   Node current = head;
+   while (current != null) {
+     count += 1;
+     if (count == index) {
+       return current.data;
+     }
+   }
+   return current.data;
+ }
+ public String set(int index, String value) {
+   count = 0;
+   Node current = head;
+   while (current != null) {
+     count += 1;
+     if (count == index) {
+       size += 1;
+       current = new Node(value);
+     }
+   }
+   return value;
+ };
+ public String toString() {
+   String str = "";
+   Node current = head;
+   while (current != null) {
+     str += current.data + ", ";
+     }
+    return str;
+
+ };
 }

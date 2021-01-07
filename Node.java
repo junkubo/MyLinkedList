@@ -3,6 +3,7 @@ public class Node{
    data = value;
  }
  public String data;
- public Node next,prev;
+ public Node next;
+ public Node prev;
 
 }
