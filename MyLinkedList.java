@@ -53,6 +53,7 @@ public class MyLinkedList{
      if (count == index) {
        return current.data;
      }
+     current = current.next;
    }
    return current.data;
  }
@@ -63,7 +64,10 @@ public class MyLinkedList{
      count += 1;
      if (count == index) {
        size += 1;
-       current = new Node(value);
+       current.data = value;
+       return value;
+     } else {
+       current = current.next;
      }
    }
    return value;
@@ -73,6 +77,7 @@ public class MyLinkedList{
    Node current = head;
    while (current != null) {
      str += current.data + ", ";
+     current = current.next;
      }
     return str;
 
