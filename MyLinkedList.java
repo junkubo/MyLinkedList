@@ -21,13 +21,13 @@ public class MyLinkedList{
     size += 1;
     if (head==null) {
       head = tail = newNode;
-      head.prev=null;
-      tail.next = null;
+      head.setPrev(null);
+      tail.setNext(null);
     } else {
-      tail.next = newNode;
-      newNode.prev = tail;
+      tail.setNext(newNode);
+      newNode.setPrev(tail);
       tail = newNode;
-      tail.next = null;
+      tail.setNext(null);
     }
     return true;
  }
@@ -38,7 +38,7 @@ public class MyLinkedList{
      count += 1;
      if (count == index) {
        size += 1;
-       current.next = current;
+       current.setNext(current);
        current = new Node(value);
        return true;
      }
@@ -51,11 +51,11 @@ public class MyLinkedList{
    while (current != null) {
      count += 1;
      if (count == index) {
-       return current.data;
+       return current.getData();
      }
-     current = current.next;
+     current = current.getNext();
    }
-   return current.data;
+   return current.getData();
  }
  public String set(int index, String value) {
    count = 0;
@@ -64,10 +64,10 @@ public class MyLinkedList{
      count += 1;
      if (count == index) {
        size += 1;
-       current.data = value;
+       current.setData(value);
        return value;
      } else {
-       current = current.next;
+       current = current.getNext();
      }
    }
    return value;
@@ -76,8 +76,8 @@ public class MyLinkedList{
    String str = "";
    Node current = head;
    while (current != null) {
-     str += current.data + ", ";
-     current = current.next;
+     str += current.getData() + ", ";
+     current = current.getNext();
      }
     return str;
 
