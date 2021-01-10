@@ -11,6 +11,6 @@ public class TesterJun {
     System.out.println("get(3): " + myList.get(3));
     System.out.println("toString(): " + myList.toString());
 
-    System.out.println("This is myList direct: " + myList);
+    System.out.println("This is myList reversed: " + myList.toStringReversed());
   }
 }

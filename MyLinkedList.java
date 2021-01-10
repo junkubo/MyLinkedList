@@ -86,4 +86,13 @@ public class MyLinkedList{
     return str;
 
  };
+ public String toStringReversed() {
+   String str = "";
+   Node current = tail;
+   while (current != null) {
+     str += current.getData() + ", ";
+     current = current.getPrev();
+   }
+   return str;
+ }
 }
