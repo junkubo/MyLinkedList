@@ -18,6 +18,7 @@ public class MyLinkedList{
 
  public boolean add(String value) {
     Node newNode = new Node(value);
+
     size += 1;
     if (head==null) {
       head = tail = newNode;
@@ -31,9 +32,12 @@ public class MyLinkedList{
     }
     return true;
  }
- public boolean add(int index, String value) {
+ public boolean add(int index, String value) throws IndexOutOfBoundsException {
    count = 0;
    Node current = head;
+   if (index < 0 || index > size) {
+     throw new IndexOutOfBoundsException("OUT OF RANGE!!");
+   }
    while (current != null) {
      count += 1;
      if (count == index) {
