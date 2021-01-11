@@ -110,15 +110,19 @@ public class MyLinkedList{
    }
    if (size == 1) {
      head = null;
+     size -= 1;
    }
    if (index == 0) {
      x = head.getData();
      head = head.getNext();
+     size -= 1;
      return x;
    }
    if (index == size) {
      x = tail.getData();
      tail = tail.getPrev();
+     tail.setNext(null);
+     size -= 1;
      return x;
    }
    count = 0;
@@ -126,10 +130,8 @@ public class MyLinkedList{
    while (current != null) {
      if (count == index) {
        String tempcurr = current.getData();
-       Node tempnext = current.getNext();
-       Node tempprev = current.getPrev();
-       current = tempnext;
-       current.setPrev(tempprev);
+       current.getPrev().setNext(current);
+       size -=1;
        return tempcurr;
      }
      current = current.getNext();
@@ -138,6 +140,9 @@ public class MyLinkedList{
    return "";
  }
  public void extend(MyLinkedList other) {
-   tail.setNext() = other.get(0);
+   tail.setNext(other.head);
+   other.head = null;
+   other.tail = null;
+   other.size = 0;
  }
 }
