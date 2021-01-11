@@ -8,9 +8,13 @@ public class TesterJun {
     myList.add("test4");
     myList.add("tail");
     myList.set(2, "two");
+    myList.add(0, 100+"");
+    myList.add(3, 120+"");
+    myList.add(2, "index add");
     System.out.println("get(3): " + myList.get(3));
     System.out.println("toString(): " + myList.toString());
 
-    System.out.println("This is myList reversed: " + myList.toStringReversed());
+    //System.out.println("This is myList reversed: " + myList.toStringReversed());
+    //System.out.println("This is myList raw: " + myList);
   }
 }

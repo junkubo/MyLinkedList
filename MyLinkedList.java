@@ -18,7 +18,6 @@ public class MyLinkedList{
 
  public boolean add(String value) {
     Node newNode = new Node(value);
-
     size += 1;
     if (head==null) {
       head = tail = newNode;
@@ -35,20 +34,29 @@ public class MyLinkedList{
  public boolean add(int index, String value) throws IndexOutOfBoundsException {
    count = 0;
    Node current = head;
+   Node newNode = new Node(value);
+
    if (index < 0 || index > size) {
      throw new IndexOutOfBoundsException("OUT OF RANGE!!");
    }
-   while (current != null) {
-     count += 1;
-     if (count == index) {
-       size += 1;
-       current.setNext(current);
-       current = new Node(value);
-       return true;
-     }
+
+   if (index == 0) {
+     size += 1;
+     newNode.setNext(head);
+     head = newNode;
+     return true;
    }
-   return false;
+   while (--index > 0) {
+     current = current.getNext();
+   }
+   size += 1;
+   newNode.setNext(current.getNext());
+   newNode.setPrev(current);
+   current.setNext(newNode);
+
+   return true;
  }
+
  public String get(int index) {
    count = 0;
    Node current = head;
@@ -65,13 +73,12 @@ public class MyLinkedList{
    count = 0;
    Node current = head;
    while (current != null) {
-     count += 1;
      if (count == index) {
-       size += 1;
        current.setData(value);
        return value;
      } else {
        current = current.getNext();
+       count += 1;
      }
    }
    return value;
