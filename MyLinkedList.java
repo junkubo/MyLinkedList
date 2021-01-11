@@ -102,4 +102,42 @@ public class MyLinkedList{
    }
    return str;
  }
+ public String remove(int index) {
+   String x;
+
+   if (index < 0 || index > size) {
+     throw new IndexOutOfBoundsException("OUT OF RANGE!!");
+   }
+   if (size == 1) {
+     head = null;
+   }
+   if (index == 0) {
+     x = head.getData();
+     head = head.getNext();
+     return x;
+   }
+   if (index == size) {
+     x = tail.getData();
+     tail = tail.getPrev();
+     return x;
+   }
+   count = 0;
+   Node current = head;
+   while (current != null) {
+     if (count == index) {
+       String tempcurr = current.getData();
+       Node tempnext = current.getNext();
+       Node tempprev = current.getPrev();
+       current = tempnext;
+       current.setPrev(tempprev);
+       return tempcurr;
+     }
+     current = current.getNext();
+     count += 1;
+   }
+   return "";
+ }
+ public void extend(MyLinkedList other) {
+   tail.setNext() = other.get(0);
+ }
 }

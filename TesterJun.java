@@ -14,6 +14,12 @@ public class TesterJun {
     System.out.println("get(3): " + myList.get(3));
     System.out.println("toString(): " + myList.toString());
 
+    myList.remove(0);
+    myList.remove(myList.size());
+    myList.remove(4);
+    System.out.println("toString(): " + myList.toString());
+
+
     //System.out.println("This is myList reversed: " + myList.toStringReversed());
     //System.out.println("This is myList raw: " + myList);
   }
